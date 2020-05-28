@@ -5,7 +5,7 @@ This code calculates snow spectral albedo and radiative fluxes at the interfaces
 TO RUN THE CODE:
 -----------------------------------------------------------------------
 - (1) Download the snicar_v3.m and snicar_v3_drv.m source files.
-- (2) Download one of the following optics library packages: (a) snicar_v3_optics.tar.gz (471 MB), which includes all optics files EXCEPT those of algae; or (b) snicar_v3_optics_with_algae.tar.gz (7 GB), which includes everything in the above package AND algae. Please note that the algae library contains > 125,000 files. 
+- (2) Download one of the following optics library packages from "Links to optics libraries": (a) snicar_v3_optics.tar.gz (471 MB), which includes all optics files EXCEPT those of algae; or (b) snicar_v3_optics_with_algae.tar.gz (7 GB), which includes everything in the above package AND algae. Please note that the algae library contains > 125,000 files. 
 - (3) Unpack the optics library into the directory of your choice, using: "tar xvfz <file>"
 - (4) In snicar_v3.m, set variable "dir_op_root" to the directory where you unpacked the optics library.
 - (5) Run the template driver routine "snicar_v3_drv.m" and see basic output fields and a plot of spectral albedo!
