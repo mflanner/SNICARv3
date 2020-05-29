@@ -34,7 +34,7 @@
 %  - Volcanic ash (Flanner et al.,2014)
 %  - A larger size bin (5-50um radius) for dust and ash particles
 %  - Multiple options for H2O ice refractive indices
-%    - Warren et al.(1984)
+%    - Warren (1984)
 %    - Warren and Brandt (2008)
 %    - Picard et al. (2016)
 %  - Several new options for surface spectral irradiance weighting
@@ -67,7 +67,7 @@
 %                  Range: 0-1
 %
 % ice_ri:        Flag for ice refractive index data to use
-%                  1 = Warren et al (1984)
+%                  1 = Warren (1984)
 %                  2 = Warren and Brandt (2008)
 %                  3 = Picard et al (2016)
 %                  4 = CO2 ice, Hansen et al (2005)
