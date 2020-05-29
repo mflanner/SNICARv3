@@ -21,6 +21,6 @@ NEW FEATURES IN THIS RELEASE:
 - Additional dust optical properties: (a) Saharan dust (Balkanski et al.,2007); (b) San Juan Mountains, Colorado (Skiles et al.,2017); (c) Greenland (Polashenski et al.,2015); (d) Martian dust (Wolff et al.2009,2010; Singh et al.,2016).
 - Volcanic ash (Flanner et al.,2014)
 - A larger size bin (5-50um radius) for dust and ash particles
-- Multiple options for H2O ice refractive indices: (a) Warren et al.(1984); (b) Warren and Brandt (2008); (c) Picard et al. (2016).
+- Multiple options for H2O ice refractive indices: (a) Warren (1984); (b) Warren and Brandt (2008); (c) Picard et al. (2016).
 - Several new options for surface spectral irradiance weighting
 - Extension of the simulated spectrum down to 0.2um
