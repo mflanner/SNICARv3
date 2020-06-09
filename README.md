@@ -15,12 +15,13 @@ Please see the header of snicar_v3.m for more information about input fields.
 
 NEW FEATURES IN THIS RELEASE:
 --------------------------------------------------------------------
-- Snow algae (Cook et al.,2017)
-- Non-spherical ice particles (He et al.,2017)
-- CO2 ice (Hansen et al.,2005; Singh et al.,2016)
-- Additional dust optical properties: (a) Saharan dust (Balkanski et al.,2007); (b) San Juan Mountains, Colorado (Skiles et al.,2017); (c) Greenland (Polashenski et al.,2015); (d) Martian dust (Wolff et al.2009,2010; Singh et al.,2016).
-- Volcanic ash (Flanner et al.,2014)
+- Snow algae (Cook et al., 2017)
+- Non-spherical ice particles (He et al., 2017)
+- Carbon dioxide ice (Hansen, 2005; Singh and Flanner, 2016)
+- Additional dust optical properties: (a) Saharan dust (Balkanski et al., 2007); (b) San Juan Mountains, Colorado (Skiles et al., 2017); (c) Greenland (Polashenski et al., 2015); (d) Martian dust (Wolff et al., 2009;2010; Singh and Flanner,2016).
+- Brown carbon (Kirchstetter et al., 2004)
+- New volcanic ash properties (Flanner et al., 2014)
 - A larger size bin (5-50um radius) for dust and ash particles
 - Multiple options for H2O ice refractive indices: (a) Warren (1984); (b) Warren and Brandt (2008); (c) Picard et al. (2016).
-- Several new options for surface spectral irradiance weighting
+- Several new options for surface spectral irradiance weighting (mid-latitude winter and summer, sub-Arctic summer and winter, Summit Greenland, high mountain, top of atmosphere)
 - Extension of the simulated spectrum down to 0.2um
