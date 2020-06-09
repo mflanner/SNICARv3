@@ -23,15 +23,16 @@
 % and setting '1==1' below the function definition.
 
 %%%%%%%%%    NEW FEATURES IN THIS RELEASE   %%%%%%%%%%%%
-%  - Snow algae (Cook et al.,2017)
-%  - Non-spherical ice particles (He et al.,2017)
-%  - CO2 ice (Hansen et al.,2005; Singh et al.,2016)
+%  - Snow algae (Cook et al., 2017)
+%  - Non-spherical ice particles (He et al., 2017)
+%  - CO2 ice (Hansen, 2005; Singh and Flanner, 2016)
 %  - Additional dust optical properties:
-%     - Saharan dust (Balkanski et al.,2007)
-%     - San Juan Mountains, Colorado (Skiles et al.,2017)
-%     - Greenland (Polashenski et al.,2015)
-%     - Martian dust (Wolff et al.2009,2010; Singh et al.,2016)
-%  - Volcanic ash (Flanner et al.,2014)
+%     - Saharan dust (Balkanski et al., 2007)
+%     - San Juan Mountains, Colorado (Skiles et al., 2017)
+%     - Greenland (Polashenski et al., 2015)
+%     - Martian dust (Wolff et al., 2009;2010; Singh and Flanner, 2016)
+%  - Brown carbon (Kirchstetter et al., 2004)
+%  - Volcanic ash (Flanner et al., 2014)
 %  - A larger size bin (5-50um radius) for dust and ash particles
 %  - Multiple options for H2O ice refractive indices
 %    - Warren (1984)
@@ -70,7 +71,7 @@
 %                  1 = Warren (1984)
 %                  2 = Warren and Brandt (2008)
 %                  3 = Picard et al (2016)
-%                  4 = CO2 ice, Hansen et al (2005)
+%                  4 = CO2 ice, Hansen (2005)
 %
 % R_sfc_all_wvl  Broadband albedo of underlying surface 
 %                  Range: 0-1
@@ -116,40 +117,40 @@
 %                  1 = Saharan dust (Balkanski et al., 2007, central hematite)
 %                  2 = San Juan Mountains, CO (Skiles et al, 2017)
 %                  3 = Greenland (Polashenski et al., 2015, central absorptivity)
-%                  4 = Martian dust (Wolff et al., 2009;2010, Singh et al., 2016)
+%                  4 = Martian dust (Wolff et al., 2009;2010, Singh and Flanner, 2016)
 %
 % mss_cnc_dst1:  Layer-specific array of mass mixing ratio of dust species 1 (radii of 0.05-0.5um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_dst2:  Layer-specific array of mass mixing ratio of dust species 2 (radii of 0.5-1.25um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_dst3:  Layer-specific array of mass mixing ratio of dust species 3 (radii of 1.25-2.5um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_dst4:  Layer-specific array of mass mixing ratio of dust species 4 (radii of 2.5-5.0um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_dst5:  Layer-specific array of mass mixing ratio of dust species 5 (radii of 5.0-50um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % ash_type:      Type of volcanic ash to use
 %                  1 = Eyjafjallajokull ash (Flanner et al.,2014)
 %
 % mss_cnc_ash1:  Layer-specific array of mass mixing ratio of volcanic ash species 1 (radii of 0.05-0.5um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_ash2:  Layer-specific array of mass mixing ratio of volcanic ash species 2 (radii of 0.5-1.25um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_ash3:  Layer-specific array of mass mixing ratio of volcanic ash species 3 (radii of 1.25-2.5um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_ash4:  Layer-specific array of mass mixing ratio of volcanic ash species 4 (radii of 2.5-5.0um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % mss_cnc_ash5:  Layer-specific array of mass mixing ratio of volcanic ash species 5 (radii of 5.0-50um)
-%                  Units of parts per billion, ng g-1
+%                  Units of parts per million, ug g-1
 %
 % cell_nbr_conc: Layer-specific array of snow algal cell abundance
 %                  Units of cells/mL or cells/gH20
@@ -265,16 +266,16 @@ if (1==0)
     mss_cnc_sot2(1:nbr_lyr)  = 0.0;    % coated black carbon [ng/g]
     mss_cnc_brc1(1:nbr_lyr)  = 0.0;    % uncoated brown carbon [ng/g]
     mss_cnc_brc2(1:nbr_lyr)  = 0.0;    % coated brown carbon [ng/g]
-    mss_cnc_dst1(1:nbr_lyr)  = 0.0;    % dust species 1 [ng/g]
-    mss_cnc_dst2(1:nbr_lyr)  = 0.0;    % dust species 2 [ng/g]
-    mss_cnc_dst3(1:nbr_lyr)  = 0.0;    % dust species 3 [ng/g]
-    mss_cnc_dst4(1:nbr_lyr)  = 0.0;    % dust species 4 [ng/g]
-    mss_cnc_dst5(1:nbr_lyr)  = 0.0;    % dust species 5 [ng/g]
-    mss_cnc_ash1(1:nbr_lyr)  = 0.0;    % volcanic ash species 1 [ng/g]
-    mss_cnc_ash2(1:nbr_lyr)  = 0.0;    % volcanic ash species 2 [ng/g]
-    mss_cnc_ash3(1:nbr_lyr)  = 0.0;    % volcanic ash species 3 [ng/g]
-    mss_cnc_ash4(1:nbr_lyr)  = 0.0;    % volcanic ash species 4 [ng/g]
-    mss_cnc_ash5(1:nbr_lyr)  = 0.0;    % volcanic ash species 5 [ng/g]
+    mss_cnc_dst1(1:nbr_lyr)  = 0.0;    % dust species 1 [ug/g]
+    mss_cnc_dst2(1:nbr_lyr)  = 0.0;    % dust species 2 [ug/g]
+    mss_cnc_dst3(1:nbr_lyr)  = 0.0;    % dust species 3 [ug/g]
+    mss_cnc_dst4(1:nbr_lyr)  = 0.0;    % dust species 4 [ug/g]
+    mss_cnc_dst5(1:nbr_lyr)  = 0.0;    % dust species 5 [ug/g]
+    mss_cnc_ash1(1:nbr_lyr)  = 0.0;    % volcanic ash species 1 [ug/g]
+    mss_cnc_ash2(1:nbr_lyr)  = 0.0;    % volcanic ash species 2 [ug/g]
+    mss_cnc_ash3(1:nbr_lyr)  = 0.0;    % volcanic ash species 3 [ug/g]
+    mss_cnc_ash4(1:nbr_lyr)  = 0.0;    % volcanic ash species 4 [ug/g]
+    mss_cnc_ash5(1:nbr_lyr)  = 0.0;    % volcanic ash species 5 [ug/g]
 
     cell_nbr_conc(1:nbr_lyr) = 0.0;    % algae [cells/mL]
     alg_rds(1:nbr_lyr)       = 10;     % mean cell radius (um)
@@ -304,16 +305,16 @@ else
     mss_cnc_sot2  = input_args.mss_cnc_sot2;    % coated black carbon [ng/g]
     mss_cnc_brc1  = input_args.mss_cnc_brc1;    % uncoated brown carbon [ng/g]
     mss_cnc_brc2  = input_args.mss_cnc_brc2;    % coated brown carbon [ng/g]
-    mss_cnc_dst1  = input_args.mss_cnc_dst1;    % dust species 1 [ng/g]
-    mss_cnc_dst2  = input_args.mss_cnc_dst2;    % dust species 2 [ng/g]
-    mss_cnc_dst3  = input_args.mss_cnc_dst3;    % dust species 3 [ng/g]
-    mss_cnc_dst4  = input_args.mss_cnc_dst4;    % dust species 4 [ng/g]
-    mss_cnc_dst5  = input_args.mss_cnc_dst5;    % dust species 5 [ng/g]
-    mss_cnc_ash1  = input_args.mss_cnc_ash1;    % volcanic ash species 1 [ng/g]
-    mss_cnc_ash2  = input_args.mss_cnc_ash2;    % volcanic ash species 2 [ng/g]
-    mss_cnc_ash3  = input_args.mss_cnc_ash3;    % volcanic ash species 3 [ng/g]
-    mss_cnc_ash4  = input_args.mss_cnc_ash4;    % volcanic ash species 4 [ng/g]
-    mss_cnc_ash5  = input_args.mss_cnc_ash5;    % volcanic ash species 5 [ng/g]
+    mss_cnc_dst1  = input_args.mss_cnc_dst1;    % dust species 1 [ug/g]
+    mss_cnc_dst2  = input_args.mss_cnc_dst2;    % dust species 2 [ug/g]
+    mss_cnc_dst3  = input_args.mss_cnc_dst3;    % dust species 3 [ug/g]
+    mss_cnc_dst4  = input_args.mss_cnc_dst4;    % dust species 4 [ug/g]
+    mss_cnc_dst5  = input_args.mss_cnc_dst5;    % dust species 5 [ug/g]
+    mss_cnc_ash1  = input_args.mss_cnc_ash1;    % volcanic ash species 1 [ug/g]
+    mss_cnc_ash2  = input_args.mss_cnc_ash2;    % volcanic ash species 2 [ug/g]
+    mss_cnc_ash3  = input_args.mss_cnc_ash3;    % volcanic ash species 3 [ug/g]
+    mss_cnc_ash4  = input_args.mss_cnc_ash4;    % volcanic ash species 4 [ug/g]
+    mss_cnc_ash5  = input_args.mss_cnc_ash5;    % volcanic ash species 5 [ug/g]
     cell_nbr_conc = input_args.cell_nbr_conc;   % algae [cells/mL]
     alg_rds       = input_args.alg_rds;         % mean cell radius (um)
     dcmf_pig_chla = input_args.dcmf_pig_chla;   % dry cell mass fraction of chlorophyll-a
@@ -638,27 +639,24 @@ for j=1:nbr_aer
     end;
 end
 
-% Set aerosol concentration matrix:
-mss_cnc_aer(1:nbr_lyr,1)  = mss_cnc_sot1;
-mss_cnc_aer(1:nbr_lyr,2)  = mss_cnc_sot2;
-mss_cnc_aer(1:nbr_lyr,3)  = mss_cnc_brc1;
-mss_cnc_aer(1:nbr_lyr,4)  = mss_cnc_brc2;
+% Set aerosol mass mixing ratio (units of kg/kg):
+mss_cnc_aer(1:nbr_lyr,1)  = mss_cnc_sot1.*1E-9;
+mss_cnc_aer(1:nbr_lyr,2)  = mss_cnc_sot2.*1E-9;
+mss_cnc_aer(1:nbr_lyr,3)  = mss_cnc_brc1.*1E-9;
+mss_cnc_aer(1:nbr_lyr,4)  = mss_cnc_brc2.*1E-9;
 
-mss_cnc_aer(1:nbr_lyr,5)  = mss_cnc_dst1;
-mss_cnc_aer(1:nbr_lyr,6)  = mss_cnc_dst2;
-mss_cnc_aer(1:nbr_lyr,7)  = mss_cnc_dst3;
-mss_cnc_aer(1:nbr_lyr,8)  = mss_cnc_dst4;
-mss_cnc_aer(1:nbr_lyr,9)  = mss_cnc_dst5;
+mss_cnc_aer(1:nbr_lyr,5)  = mss_cnc_dst1.*1E-6;
+mss_cnc_aer(1:nbr_lyr,6)  = mss_cnc_dst2.*1E-6;
+mss_cnc_aer(1:nbr_lyr,7)  = mss_cnc_dst3.*1E-6;
+mss_cnc_aer(1:nbr_lyr,8)  = mss_cnc_dst4.*1E-6;
+mss_cnc_aer(1:nbr_lyr,9)  = mss_cnc_dst5.*1E-6;
 
-mss_cnc_aer(1:nbr_lyr,10)  = mss_cnc_ash1;
-mss_cnc_aer(1:nbr_lyr,11)  = mss_cnc_ash2;
-mss_cnc_aer(1:nbr_lyr,12)  = mss_cnc_ash3;
-mss_cnc_aer(1:nbr_lyr,13)  = mss_cnc_ash4;
-mss_cnc_aer(1:nbr_lyr,14)  = mss_cnc_ash4;
+mss_cnc_aer(1:nbr_lyr,10)  = mss_cnc_ash1.*1E-6;
+mss_cnc_aer(1:nbr_lyr,11)  = mss_cnc_ash2.*1E-6;
+mss_cnc_aer(1:nbr_lyr,12)  = mss_cnc_ash3.*1E-6;
+mss_cnc_aer(1:nbr_lyr,13)  = mss_cnc_ash4.*1E-6;
+mss_cnc_aer(1:nbr_lyr,14)  = mss_cnc_ash4.*1E-6;
 
-
-% convert to units of kg/kg:
-mss_cnc_aer  = mss_cnc_aer.*10^-9;
 
 if (cell_nbr_conc(n) > 0)
     % mean algal cell volume (3rd moment of Gaussian distribution) by layer:
@@ -1120,7 +1118,6 @@ end;
 % biological influence on ice and snow albedo, The Cryosphere, 11,
 % 2611-2632, doi: 10.5194/tc-11-2611-2017.
 %
-%
 % Dang, C., Zender, C. S., and Flanner, M. G. (2019), Intercomparison
 % and improvement of two-stream shortwave radiative transfer schemes
 % in Earth system models for a unified treatment of cryospheric
@@ -1152,6 +1149,11 @@ end;
 % shape and black carbon-snow internal mixing on snow optical
 % properties: Parameterizations for climate models, J. Climate,
 % 30(24), 10019-10036, doi:10.1175/JCLI-D-17-0300.1.
+%
+% Kirchstetter, T. W., T. Novakov, and P. V. Hobbs (2004), Evidence
+% that the spectral dependence of light absorption by aerosols is
+% affected by organic carbon, J. Geophys. Res., 109, D21208,
+% doi:10.1029/2004JD004999.
 %
 % Lawrence, D. and others (2018), Technical Description of version 5.0
 % of the Community Land Model (CLM),
