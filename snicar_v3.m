@@ -183,9 +183,6 @@
 function data_out = snicar_v3(input_args)
     
 
-% ROOT DIRECTORY FOR ALL OPTICAL AND SPECTRAL IRRADIANCE FILES
-dir_op_root = '/data/flanner/mie/snicar_480band/';
-
 % IF USER PREFERS TO RUN THIS AS A SCRIPT INSTEAD OF A FUNCTION:
 %   (1) COMMENT OUT THE FUNCTION CALL ABOVE
 %   (2) SET 1==1 BELOW AND DEFINE ALL INPUT IN THIS BLOCK
@@ -323,6 +320,9 @@ else
     dcmf_pig_carb = input_args.dcmf_pig_carb;   % dry cell mass fraction of photosynthetic carotenoids
 end;
 
+
+% ROOT DIRECTORY FOR ALL OPTICAL AND SPECTRAL IRRADIANCE FILES
+dir_op_root = '/data/flanner/mie/snicar_480band/';
 
 % Sub-directories of NetCDF files for (1) optical properties of
 % light-absorbing impurities, (2) optical properties of snow algae,
