@@ -1,4 +1,4 @@
-% Driver for SNICARv3 subroutine
+% Driver for SNICARv3 or SNICAR-ADv3 subroutine
 
 clear;
     
@@ -16,7 +16,7 @@ input_args.dz = [1000]; % single, optically-semi-infinite layer
 nbr_lyr = length(input_args.dz);  % number of snow layers
 
 % SNOW DENSITY FOR EACH LAYER (units: kg/m3)
-input_args.rho_snw(1:nbr_lyr) = 150;
+input_args.rho_snw(1:nbr_lyr) = 200;
 
 % SNOW GRAIN SIZE FOR EACH LAYER (units: microns):
 input_args.rds_snw(1:nbr_lyr) = 100;
@@ -27,7 +27,7 @@ input_args.ice_ri = 3;
     
 % Snow grain shape option
 % 1=sphere; 2=spheroid; 3=hexagonal plate; 4=koch snowflake
-input_args.sno_shp(1:nbr_lyr)  = 1;    
+input_args.sno_shp(1:nbr_lyr)  = 3;
 
 % Shape factor: ratio of nonspherical grain effective radii to that of equal-volume sphere
 % 0=use recommended default value (He et al. 2017);
@@ -67,8 +67,8 @@ input_args.mss_cnc_ash5(1:nbr_lyr)  = 0.0;    % volcanic ash size 5 (r=5.0-50um)
 
 input_args.cell_nbr_conc(1:nbr_lyr) = 0.0;    % algae [UNITS: cells/mL]
 input_args.alg_rds(1:nbr_lyr)       = 10;     % mean algae cell radius (um)
-input_args.dcmf_pig_chla(1:nbr_lyr) = 0.02;   % dry cell mass fraction of chlorophyll-a
-input_args.dcmf_pig_chlb(1:nbr_lyr) = 0.02;   % dry cell mass fraction of chlorophyll-b
+input_args.dcmf_pig_chla(1:nbr_lyr) = 0.015;  % dry cell mass fraction of chlorophyll-a
+input_args.dcmf_pig_chlb(1:nbr_lyr) = 0.005;  % dry cell mass fraction of chlorophyll-b
 input_args.dcmf_pig_cara(1:nbr_lyr) = 0.05;   % dry cell mass fraction of photoprotective_carotenoids
 input_args.dcmf_pig_carb(1:nbr_lyr) = 0.00;   % dry cell mass fraction of photosynthetic_carotenoids    
 
@@ -96,11 +96,11 @@ input_args.flx_dwn_bb = 1.0;
 
 
 % CALL SNICAR WITH INPUT ARGUMENTS
-di = snicar_v3(input_args)
-    
+di = snicarAD_v3(input_args)
 
-% plot modeled albedo:
-if (1==1)
+
+% plot modeled spectral albedo:
+if (1==0)
     plot(di.wvl,di.albedo,'b','linewidth',3);
     axis([0.2 2.5 0 1]);
     set(gca,'xtick',0.2:0.2:2.5,'fontsize',14)
@@ -108,6 +108,5 @@ if (1==1)
     xlabel('Wavelength (\mum)','fontsize',20);
     ylabel('Hemispheric Albedo','fontsize',20);
     grid on;
-    %saveas(gcf,'foo.png','png');
 end;
 
