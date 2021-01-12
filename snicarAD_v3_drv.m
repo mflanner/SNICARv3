@@ -11,7 +11,7 @@ input_args.coszen = 0.5;
   
 % SNOW LAYER THICKNESSES [m]:
 %input_args.dz = [0.02 0.02 0.05 1.0]; % multi-layer snowpack
-input_args.dz = [1000]; % single, optically-semi-infinite layer
+input_args.dz = [100]; % single, optically-semi-infinite layer
 
 nbr_lyr = length(input_args.dz);  % number of snow layers
 
