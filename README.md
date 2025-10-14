@@ -1,9 +1,9 @@
-# ❄️ SNICAR-ADv3
+# ❄️ SNICAR-ADv3 + Graphical User Interface
 
 This code uses a two-stream approximation to calculate snow spectral albedo and radiative fluxes at the interfaces of any number of snow layers with distinct properties. Now with a GUI for offline modeling within the MATLAB environment.
 
 ## 🛠️ How to Use
-- (1) Download the `snicarAD_v3.m` and `snicarAD_v3_drv.m` source files. **Optional**: Download the `SNICARv3.mlapp` file, which is a MATLAB graphical user interface.
+- (1) Download the `snicarAD_v3.m` and `snicarAD_v3_drv.m` source files. **Optional**: Download the `SNICARv3.mlapp` file, which is a MATLAB graphical user interface (GUI).
 - (2) Download one of the following optics library packages from "Links to optics libraries": (a) `snicar_v3_optics.tar.gz` (637 MB), which includes all optics files EXCEPT those of algae; or (b) `snicar_v3_optics_with_algae.tar.gz` (7.1 GB), which includes everything in the above package AND algae. Please note that the algae library contains > 125,000 files. 
 - (3) Unpack the optics library into the directory of your choice, using: "`tar xvfz <file>`". If you are using Windows10, right-click the optics folder and use `7-Zip` to extract the contents of the `.tar` file.
 - (4) In `snicarAD_v3.m`, set variable "`dir_op_root`" to the directory where you unpacked the optics library. Use the full name of the search path to ensure that the model runs properly. For example:
