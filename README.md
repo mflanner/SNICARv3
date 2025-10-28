@@ -21,7 +21,9 @@ Please see the header of `snicarAD_v3.m` for more information about input fields
 
 ## ✨ New Features
 ### October 2025
-- Introducing `SNICARv3.mlapp`: A graphical user interface that can be run offline in the MATLAB environment. Simply follow the instructions in the ["How to Use"](#how-to-Use) section and then type `SNICARv3` in the MATLAB command window to open the GUI.
+- Introducing `SNICARv3.mlapp`: A graphical user interface that can be run offline in the MATLAB environment. Simply follow the instructions in the ["How to Use"](#🛠️-How-to-Use) section and then type `SNICARv3` in the MATLAB command window to open the GUI.
+- Introducing `snicar.m`: A user-friendly version of the `snicarAD_v3` function.
+- A demo script `snicar_demo.mlx` (also available as an HTML file to view in your web browser) has been added to repository to improve the documentation of these new features.
 
 ### January 2021 
 - Replacement of the tri-diagonal matrix two-stream solver with the Adding-Doubling solver (Dang et al.,2019)
