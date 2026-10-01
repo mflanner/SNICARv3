@@ -99,6 +99,36 @@ function results = snicar(varargin)
 %                                Elem3 = Photoprotective carotenoids
 %                                Elem4 = Photosynthetic carotenoids
 %
+% 'Latitude'              [] (degrees) Specifying the latitude will over-
+%                                      write the SZA parameter! It calls
+%                                      the szaLat(latitude) function to
+%                                      approximate the average annual SZA
+%                                      for that latitude. You may
+%                                      additionally specify the 'Day' or
+%                                      'Month' argument to this function to
+%                                      calculate the average SZA for the
+%                                      given latitude over a specified
+%                                      range of days or months. Type `help
+%                                      szaLat` in the Command Window for
+%                                      more details.
+%
+% 'Day'                   [] (day/days of year) Scalar between 1 and 365 or
+%                                               a vector of day numbers. To
+%                                               be used with the 'Latitude'
+%                                               argument, if desired. Day=1
+%                                               corresponds to 01-Jan.
+%                                               while Day=365 is 31-Dec.
+%
+% 'Month'                 [] (month(s) of year) Scalar between 1 and 12 or
+%                                               a vector of month numbers.
+%                                               To be used with the
+%                                               'Latitude' argument, if
+%                                               desired. Cannot be combined
+%                                               with the 'Day' argument!
+%                                               Month=1 corresponds to Jan,
+%                                               Month=2 corresponds to Feb,
+%                                               up to Month=12 (Dec).
+%
 %See also
 % snicarAD_v3
 
@@ -148,6 +178,9 @@ addParameter(inP,'VolcanicAsh',[0 0 0 0 0],@(x) isnumeric(x));
 addParameter(inP,'SnowAlgae',0,@(x) isnumeric(x) & isscalar(x));
 addParameter(inP,'AlgaeRadius',10,@(x) isnumeric(x) & isscalar(x));
 addParameter(inP,'DryCellMass',[0 0 0 0],@(x) isnumeric(x));
+addParameter(inP,'Latitude',[],@(x) isnumeric(x));
+addParameter(inP,'Day',[],@(x) isnumeric(x));
+addParameter(inP,'Month',[],@(x) isnumeric(x));
 
 parse(inP,varargin{:});
 IR = inP.Results.IncidentRadiation;
@@ -170,6 +203,23 @@ VA  = inP.Results.VolcanicAsh;
 SnowAlgae = inP.Results.SnowAlgae;
 AlgaeRadius=inP.Results.AlgaeRadius;
 DSM = inP.Results.DryCellMass;
+lat = inP.Results.Latitude;
+d = inP.Results.Day;
+m = inP.Results.Month;
+
+% Was latitude specified? If so, auto-calculate and overwrite SZA
+if ~isempty(lat)
+  if ~isempty(d)
+    SZA = szaLat(lat,Day=d);
+    SZA2 = SZA;
+  elseif ~isempty(m)
+    SZA = szaLat(lat,Month=m);
+    SZA2 = SZA;
+  else
+    SZA = szaLat(lat);
+    SZA2 = SZA;
+  end
+end
 
 % Error messages
 if IR < 0 || IR > 1
@@ -180,8 +230,8 @@ if ~isequal(SZA,SZA2)
     SZA=SZA2;
   end
 end
-if SZA < 0 || SZA > 89
-  error('''SolarZenithAngle'' must be between 0 and 89 degrees.')
+if SZA < 0 || SZA > 90
+  error('''SolarZenithAngle'' must be between 0 and 90 degrees.')
 end
 if ~any(ismember(1:7,ATM))
   error('''AtmosphereType'' must be an integer between 1 and 7.')

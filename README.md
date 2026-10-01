@@ -6,20 +6,41 @@ This code uses a two-stream approximation to calculate snow spectral albedo and 
 
 
 ## 🛠️ How to Use
-- (1) Download the `snicarAD_v3.m` and `snicarAD_v3_drv.m` source files. **Optional**: Download the `SNICARv3.mlapp` file, which is a MATLAB graphical user interface (GUI).
-- (2) Download one of the following optics library packages from "Links to optics libraries": (a) `snicar_v3_optics.tar.gz` (637 MB), which includes all optics files EXCEPT those of algae; or (b) `snicar_v3_optics_with_algae.tar.gz` (7.1 GB), which includes everything in the above package AND algae. Please note that the algae library contains > 125,000 files. 
-- (3) Unpack the optics library into the directory of your choice, using: "`tar xvfz <file>`". If you are using Windows10, right-click the optics folder and use `7-Zip` to extract the contents of the `.tar` file.
-- (4) In `snicarAD_v3.m`, set variable "`dir_op_root`" to the directory where you unpacked the optics library. Use the full name of the search path to ensure that the model runs properly. For example:
+1. Download the three source files: `snicarAD_v3.m`, `snicarAD_v3_drv.m`, and `snicar.m`, as well as the helper function `szaLat.m`.
+   - Optional: Download the `SNICARv3.mlapp` file, which is a MATLAB graphical user interface (GUI).
+
+2. Navigate to the 📁[**Links to optics libraries**](https://github.com/mflanner/SNICARv3/blob/master/Links%20to%20optics%20libraries.md) folder and download one of the following optics library packages:
+   - `snicar_v3_optics.tar.gz` (637 MB), which includes all optics files EXCEPT those of algae; or
+   - `snicar_v3_optics_with_algae.tar.gz` (7.1 GB), which includes everything in the above package AND algae. Please note that the algae library contains > 125,000 files. 
+3. Unpack the optics library into the directory of your choice, using: "`tar xvfz <file>`". If you are using Windows10, right-click the optics folder and use `7-Zip` to extract the contents of the `.tar` file.
+
+4. In `snicarAD_v3.m`, set variable "`dir_op_root`" to the directory where you unpacked the optics library. Use the full name of the search path to ensure that the model runs properly. For example:
 
 ```matlab
 <Ln184> dir_op_root = 'C:\Users\JohnDoe\Desktop\SNICAR\OpticsLibrary\snicar_480band\'; 
 ```
 
-- (5) Run the template driver routine "`snicarAD_v3_drv.m`" and see basic output fields and a plot of spectral albedo.
+5. Run the template driver routine "`snicarAD_v3_drv.m`" and see basic output fields and a plot of spectral albedo.
 
-Please see the header of `snicarAD_v3.m` for more information about input fields.
+6. Use the `snicar.m` function to run the model on your own data. For example:
 
-## ✨ New Features
+```matlab
+results = snicar(SolarZenithAngle=30, AtmosphereType=2, SnowpackThickness=0.1, BlackCarbon=5.0);
+figure
+plot(results.wvl, results.albedo)
+xlabel('Wavelength (microns)')
+ylabel('Hemispheric Albedo')
+```
+
+<img width="655" height="359" alt="image" src="https://github.com/user-attachments/assets/5c642837-909f-4796-b1d0-03b6b733bc0f" />
+
+
+For more information about input fields, execute `help snicar` in the MATLAB Command Window, or, see the `snicar_demo.m` or `snicar_demo.html` files.
+
+## ✨ Latest Features
+### September 2026
+- Added a new input parameter that automatically calculates the solar zenith angle for a given latitude. For example, specifying `snicar(Latitude=10)` will call the `szaLat.m` function to calculate the average solar zenith angle at latitude 10°N and use that value to constrain the model simulation. The averaging can be further constrained to specific days or seasons by specifying the optional `Day` or `Month` input arguments. For example, `snicar(Latitude=10, Month=[7 8 9])` will use the average solar zenith angle at 10°N between July and September (i.e., months 7, 8, and 9). For more information on the solar zenith angle calculation, execute `help szaLat` in the MATLAB Command Window.
+  
 ### October 2025
 - Introducing `SNICARv3.mlapp`: A graphical user interface that can be run offline in the MATLAB environment. Simply follow the instructions in the ["How to Use"](#🛠️-How-to-Use) section and then type `SNICARv3` in the MATLAB command window to open the GUI.
 - Introducing `snicar.m`: A user-friendly version of the `snicarAD_v3` function.
@@ -45,7 +66,7 @@ Please see the header of `snicarAD_v3.m` for more information about input fields
 Please cite both of the following in peer-review publications:
 
 * Flanner, M. G., Arnheim, J. B., Cook, J. M., Dang, C., He, C., Huang, X., Singh, D., Skiles, S. M., Whicker, C. A., & Zender, C. S. (2021). SNICAR-ADv3: A community tool for modeling spectral snow albedo. *Geoscientific Model Development*, *14*(12), 7673–7704. https://doi.org/10.5194/gmd-14-7673-2021
-* Flanner, M. G. (2023). SNICAR-ADv3 [MATLAB]. GitHub. https://github.com/mflanner/SNICARv3
+* Flanner, M. G. and SNICAR Contributors (2020). SNICAR-ADv3 [MATLAB]. GitHub. https://github.com/mflanner/SNICARv3 (Last accessed: DD-Mon-YYYY)
 
 For `BibLaTeX`:
 ```tex
@@ -61,10 +82,11 @@ For `BibLaTeX`:
   doi = {10.5194/gmd-14-7673-2021}
 }
 
-@software{flanner2023,
+@software{snicarADv3,
   title = {{{SNICAR-ADv3}}},
-  author = {Flanner, Mark G.},
-  date = {2023-08-10},
+  author = {Flanner, Mark G. and {SNICAR Contributors}},
+  year = 2020,
+  urldate = {YYYY-MM-DD},
   url = {https://github.com/mflanner/SNICARv3}
 }
 ```

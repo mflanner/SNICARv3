@@ -1,0 +1,5 @@
+# Treat .mlx files as MATLAB code for the language statistics
+*.mlx linguist-language=MATLAB
+
+# Hide HTML from the language statistics
+*.html linguist-detectable=false
